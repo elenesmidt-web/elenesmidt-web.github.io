@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://elenesmidt-web.github.io/</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/en-fleet.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/guias/en-fleet.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/es-motos.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/guias/es-motos.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/es-maquinaria.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/guias/es-maquinaria.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/es-remises.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/guias/es-remises.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/es-colectivos.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/guias/es-colectivos.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/p/en-pack.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/p/en-equipment.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/guias/en-equipment.html</loc></url>
@@ -20,4 +30,9 @@
 <url><loc>https://elenesmidt-web.github.io/guias/en-generator.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/p/en-forklift.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/guias/en-forklift.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/s/calendario-redes.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/s/plan-anuncios.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/s/plan-mantenimiento.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/s/30-day-blog-calendar.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/s/sop-guide-for-small-business.html</loc></url>
 </urlset>
