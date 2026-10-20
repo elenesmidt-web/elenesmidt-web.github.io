@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://elenesmidt-web.github.io/</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/es-camiones.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/guias/es-camiones.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/es-utilitarios.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/guias/es-utilitarios.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/en-foodtruck.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/guias/en-foodtruck.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/en-snowplow.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/guias/en-snowplow.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/p/en-fleet.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/guias/en-fleet.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/p/es-motos.html</loc></url>
