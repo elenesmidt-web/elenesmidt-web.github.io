@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://elenesmidt-web.github.io/</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/libro-atravesar-el-duelo.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/libro-despues-de-una-ruptura.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/libro-autocuidado-30-dias.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/p/libro-organizacion.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/p/es-stock-libreria.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/p/es-stock-ferreteria.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/p/es-stock-comercio.html</loc></url>
@@ -54,4 +58,6 @@
 <url><loc>https://elenesmidt-web.github.io/s/plan-mantenimiento.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/s/30-day-blog-calendar.html</loc></url>
 <url><loc>https://elenesmidt-web.github.io/s/sop-guide-for-small-business.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/s/30-day-email-newsletter-calendar.html</loc></url>
+<url><loc>https://elenesmidt-web.github.io/s/customer-onboarding-sop-guide.html</loc></url>
 </urlset>
