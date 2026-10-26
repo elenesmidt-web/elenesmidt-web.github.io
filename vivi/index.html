@@ -223,6 +223,14 @@ function pintar(d) {
         ${(c.seguimientos || []).map((t, j) => `<div class="etq" style="margin-top:8px">Si no contesta, a los ${j ? 10 : 4} días</div><blockquote id="ps${i}-${j}">${esc(t)}</blockquote><button class="copiar" type="button" data-c="ps${i}-${j}">Copiar</button>`).join("")}</li>`).join("")
         || '<li class="vacio">Todavía no encontró ninguna que valga la pena.</li>'}</ul></section>`;
   }
+  if (d.freelance) {
+    const fl = d.freelance;
+    h += `<section class="panel"><h2>Trabajos freelance</h2><p class="visto">${esc(fl.resumen)}. Vivi busca en Freelancer.com y redacta; la oferta la mandás vos desde tu cuenta. Si te lo dan, Vivi lo arma.</p>
+      <ul class="lista ok">${fl.lista.map((x, i) => `<li><b>nota ${x.nota} · USD ${x.usd[0]}-${x.usd[1]} · ${x.ofertas} ofertas</b> <a href="${esc(x.url)}" rel="noopener">${esc(x.titulo)}</a><br>
+        ${esc(x.entregable)}<br>Ofertar USD ${esc(String(x.oferta_usd ?? ""))} en ${esc(String(x.dias ?? ""))} días · tu tiempo ~${esc(String(x.horas_elias ?? ""))} h
+        <div class="etq" style="margin-top:8px">Propuesta</div><blockquote id="fl${i}">${esc(x.propuesta)}</blockquote><button class="copiar" type="button" data-c="fl${i}">Copiar propuesta</button></li>`).join("")
+        || '<li class="vacio">Todavía no encontró trabajos que valgan la pena.</li>'}</ul></section>`;
+  }
   if (d.hotmart) {
     const hm = d.hotmart;
     h += `<section class="panel"><h2>Hotmart</h2><p class="visto">${hm.conectada ? "Conectada: Vivi ve tus productos y ventas." :
