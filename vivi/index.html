@@ -65,7 +65,7 @@ table { width: 100%; border-collapse: collapse; font-size: .88rem; }
 th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { font-weight: 600; color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; }
 td.n, th.n { white-space: nowrap; text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
-.chip { font: 600 .7rem var(--mono); padding: 2px 7px; border-radius: 6px; background: var(--chip); }
+.chip { white-space: nowrap; font: 600 .7rem var(--mono); padding: 2px 7px; border-radius: 6px; background: var(--chip); }
 .chip.baja { color: var(--bad); }
 .grafico svg { width: 100%; height: 150px; display: block; }
 .grafico rect { fill: var(--pulse); } .grafico text { fill: var(--muted); font: 10px var(--mono); }
@@ -195,6 +195,23 @@ function pintar(d) {
     <section class="panel"><h2>Necesita tu OK</h2>
       <ul class="lista ok">${(dr.propuestas || []).map(propuesta).join("") || '<li class="vacio">Nada por ahora.</li>'}</ul></section></div>`;
   h += `<section class="panel grafico"><h2>Visitas por día en Mercado Libre</h2>${grafico(d.visitas)}</section>`;
+  if (d.hotmart) {
+    const hm = d.hotmart;
+    h += `<section class="panel"><h2>Hotmart</h2><p class="visto">${hm.conectada ? "Conectada: Vivi ve tus productos y ventas." :
+      "Todavía sin conectar: Vivi arma los paquetes igual, pero no ve lo que subís ni las ventas."} · ${hm.ventas} venta(s)</p>
+      <ul class="lista">${(hm.kits || []).map(k => `<li><b>${k.estado === "publicado" ? "publicado" : "para subir"}</b> ${esc(k.nombre)} · USD ${k.precio}
+      ${k.estado !== "publicado" && k.carpeta ? ` · <a href="${esc(k.carpeta)}" rel="noopener">paquete (LEEME.txt)</a>` : ""}</li>`).join("")
+      || '<li class="vacio">Todavía no armó paquetes.</li>'}</ul></section>`;
+  }
+  if (d.habilidades) {
+    const hb = d.habilidades, ap = (d.piensa || {}).aprender || [];
+    const est = {sabe: "lo hace", parcial: "a medias", falta: "le falta"};
+    h += `<section class="panel"><h2>Habilidades</h2><div class="tabla"><table><thead><tr><th>Lo que pagan las empresas</th><th>Vivi</th><th>Qué hace</th><th>Qué le falta</th></tr></thead><tbody>
+      ${hb.mapa.map(m => `<tr><td>${esc(m.nombre)}</td><td><span class="chip ${m.estado === "falta" ? "baja" : ""}">${est[m.estado] || esc(m.estado)}</span></td><td>${esc(m.hace) || "—"}</td><td>${esc(m.falta)}</td></tr>`).join("")}
+      </tbody></table></div>
+      ${ap.length ? `<div class="etq" style="margin-top:14px">Quiere aprender</div><ul class="lista">${ap.map(a => `<li><b>${fecha(a.fecha)}</b> ${esc(a.habilidad)} — ${esc(a.para_que)}</li>`).join("")}</ul>` : ""}
+    </section>`;
+  }
   if ((d.ml || []).length) h += `<section class="panel"><h2>Publicaciones en Mercado Libre</h2><div class="tabla"><table>
     <thead><tr><th>Producto</th><th class="n">Precio</th><th class="n">Visitas 7 d</th><th class="n">Totales</th><th>Estado</th></tr></thead><tbody>
     ${d.ml.map(f => `<tr><td>${f.enlace ? `<a href="${esc(f.enlace)}" rel="noopener">${esc(f.clave)}</a>` : esc(f.clave)}</td><td class="n">${ars(f.precio)}</td>
