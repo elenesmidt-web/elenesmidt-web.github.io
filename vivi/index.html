@@ -195,6 +195,22 @@ function pintar(d) {
     <section class="panel"><h2>Necesita tu OK</h2>
       <ul class="lista ok">${(dr.propuestas || []).map(propuesta).join("") || '<li class="vacio">Nada por ahora.</li>'}</ul></section></div>`;
   h += `<section class="panel grafico"><h2>Visitas por día en Mercado Libre</h2>${grafico(d.visitas)}</section>`;
+  if (d.soluciones) {
+    const so = d.soluciones, e = so.embudo || {};
+    const etapas = [["nuevo", "nuevos"], ["muestra-lista", "muestra lista"], ["contactado", "contactados"], ["reunion", "reunión"],
+                    ["muestra-enviada", "muestra enviada"], ["cliente", "clientes"], ["perdido", "perdidos"]];
+    const total = so.cobros.reduce((s, c) => s + (c.usd || 0), 0);
+    h += `<section class="panel"><h2>Vivi Soluciones · tus clientes</h2>
+      <div class="signos">${etapas.map(([k, n]) => `<div class="signo"><div class="etq">${n}</div><div class="v">${e[k] || 0}</div></div>`).join("")}
+        <div class="signo"><div class="etq">Cobrado</div><div class="v">${usd(total)}</div></div></div>
+      <p class="visto">Para pedir una muestra: <a href="${esc(so.repo)}/new/choose" rel="noopener">abrí un pedido en GitHub</a> (Muestra para un cliente).
+      Cuando te paguen, comentá <span class="num">/cobrado 150000</span> en el pedido.</p>
+      <ul class="lista">${so.pedidos.map(p => `<li><b>${esc(p.etapa)}</b> <a href="${esc(so.repo)}/${p.numero}" rel="noopener">#${p.numero}</a> ${esc(p.titulo)}
+        ${p.propuesta && p.propuesta.precio_ars ? ` · propuesta ${ars(p.propuesta.precio_ars)}${p.propuesta.abono_ars ? ` + ${ars(p.propuesta.abono_ars)}/mes` : ""}` : ""}</li>`).join("")
+        || '<li class="vacio">Todavía no hay pedidos.</li>'}</ul>
+      ${so.cobros.length ? `<div class="etq" style="margin-top:12px">Cobros</div><ul class="lista">${so.cobros.map(c => `<li><b>${fecha(c.fecha)}</b> ${esc(c.empresa)} · ${esc(c.moneda)} ${Number(c.monto).toLocaleString("es-AR")} (${usd(c.usd)})</li>`).join("")}</ul>` : ""}
+    </section>`;
+  }
   if (d.prospectos) {
     const pr = d.prospectos;
     h += `<section class="panel"><h2>Clientes posibles</h2><p class="visto">${esc(pr.resumen)}. Vivi no le escribe a nadie: si una te interesa, mandale vos el mail. Si alguien pide la baja, no le escribas más. Por WhatsApp o SMS, solo a quien ya te conoce (y revisá el <a href="https://nollame.gob.ar" rel="noopener">Registro No Llame</a>).</p>
