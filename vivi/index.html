@@ -197,12 +197,14 @@ function pintar(d) {
   h += `<section class="panel grafico"><h2>Visitas por día en Mercado Libre</h2>${grafico(d.visitas)}</section>`;
   if (d.prospectos) {
     const pr = d.prospectos;
-    h += `<section class="panel"><h2>Clientes posibles</h2><p class="visto">${esc(pr.resumen)}. Vivi no le escribe a nadie: si una te interesa, mandale vos el mensaje.</p>
+    h += `<section class="panel"><h2>Clientes posibles</h2><p class="visto">${esc(pr.resumen)}. Vivi no le escribe a nadie: si una te interesa, mandale vos el mail. Si alguien pide la baja, no le escribas más. Por WhatsApp o SMS, solo a quien ya te conoce (y revisá el <a href="https://nollame.gob.ar" rel="noopener">Registro No Llame</a>).</p>
       <ul class="lista ok">${pr.lista.map((c, i) => `<li><b>${esc(c.rubro)} · nota ${c.nota}</b> <strong>${esc(c.nombre)}</strong> · ${esc(c.direccion || "AMBA")}<br>
         ${esc(c.por_que)}<br>Ofrecerle: ${esc(c.oferta)}${c.precio_ars ? ` · ${ars(c.precio_ars)}` : ""}${c.abono_ars ? ` + ${ars(c.abono_ars)}/mes` : ""}<br>
-        ${[c.telefono && esc(c.telefono), c.email && esc(c.email), c.web && `<a href="${esc(/^https?:/.test(c.web) ? c.web : "https://" + c.web)}" rel="noopener">web</a>`,
-           c.whatsapp && `<a href="${esc(c.whatsapp)}?text=${encodeURIComponent(c.mensaje)}" rel="noopener">abrir WhatsApp con el mensaje</a>`].filter(Boolean).join(" · ")}
-        <blockquote id="p${i}">${esc(c.mensaje)}</blockquote><button class="copiar" type="button" data-c="p${i}">Copiar mensaje</button></li>`).join("")
+        ${[c.email && `<a href="mailto:${esc(c.email)}?subject=${encodeURIComponent(c.asunto || "")}&body=${encodeURIComponent(c.mensaje || "")}">mandar mail a ${esc(c.email)}</a>`,
+           c.web && `<a href="${esc(/^https?:/.test(c.web) ? c.web : "https://" + c.web)}" rel="noopener">web</a>`].filter(Boolean).join(" · ")}
+        <div class="etq" style="margin-top:8px">Asunto</div><blockquote id="pa${i}">${esc(c.asunto || "")}</blockquote><button class="copiar" type="button" data-c="pa${i}">Copiar asunto</button>
+        <div class="etq" style="margin-top:8px">Mail</div><blockquote id="p${i}">${esc(c.mensaje)}</blockquote><button class="copiar" type="button" data-c="p${i}">Copiar mail</button>
+        ${(c.seguimientos || []).map((t, j) => `<div class="etq" style="margin-top:8px">Si no contesta, a los ${j ? 10 : 4} días</div><blockquote id="ps${i}-${j}">${esc(t)}</blockquote><button class="copiar" type="button" data-c="ps${i}-${j}">Copiar</button>`).join("")}</li>`).join("")
         || '<li class="vacio">Todavía no encontró ninguna que valga la pena.</li>'}</ul></section>`;
   }
   if (d.hotmart) {
